@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReferralForm from './ReferralForm';
+import './App.css';
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -8,14 +9,17 @@ const App = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <div className="container mx-auto text-center my-10">
-      <h1 className="text-4xl font-bold">Refer & Earn</h1>
-      <button className="mt-5 bg-blue-500 text-white py-2 px-4 rounded" onClick={handleOpen}>
-        Refer Now
-      </button>
+    <div className="app-container">
+      <div className="hero-section">
+        <h1 className="title">Refer & Earn</h1>
+        <button className="refer-button" onClick={handleOpen}>
+          Refer Now
+        </button>
+      </div>
       {open && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded shadow-lg">
+        <div className="modal-backdrop">
+          <div className="modal">
+            <button className="close-button" onClick={handleClose}>×</button>
             <ReferralForm handleClose={handleClose} />
           </div>
         </div>
